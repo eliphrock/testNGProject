@@ -21,4 +21,6 @@ public class LogInPage {
 
     @FindBy(xpath="//div[@role='alert']")
     public WebElement errorMessage;
+
+
 }
