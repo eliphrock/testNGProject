@@ -7,20 +7,35 @@ import techproed.pages.HomePage;
 import techproed.pages.LogInPage;
 import techproed.utilities.ConfigReader;
 import techproed.utilities.Driver;
+import techproed.utilities.ExcelUtils;
 import techproed.utilities.ReusableMethods;
 
-public class Day21_DataProvider2 {
+public class Day21_Dataprovider3 {
+    /*
+    in this method ,we will get the data from excel using data provider
+    the only difference between class2 and class 3 is the place where we get the data
+    in class2, we received the data from the class itself.in this class we get the data from excel
+     */
+
     HomePage homePage;
     LogInPage logInPage;
+
     @DataProvider
-    public Object[][] customerData(){
-//    TEST DATA
-        Object [][] customerCredentials = {
-                {"sam.walker@bluerentalcars.com","c!fas_art"},
-                {"kate.brown@bluerentalcars.com","tad1$Fas"},
-                {"raj.khan@bluerentalcars.com","v7Hg_va^"},
-                {"pam.raymond@bluerentalcars.com","Nga^g6!"}
-        };
+    public Object[][] customerData() {
+//    TEST DATA, get data from excel
+        //path of excel sheet
+        String path="./src/test/java/resources/mysmoketestdata.xlsx";
+        String sheetName = "customer_info";
+        ExcelUtils excelUtils=new ExcelUtils(path,sheetName);
+        //use one of the excel util method to receieve the data from the excel
+
+        Object [][] customerCredentials=excelUtils.getDataArrayWithoutFirstRow();
+//        Object[][] customerCredentials = {
+//                {"sam.walker@bluerentalcars.com", "c!fas_art"},
+//                {"kate.brown@bluerentalcars.com", "tad1$Fas"},
+//                {"raj.khan@bluerentalcars.com", "v7Hg_va^"},
+//                {"pam.raymond@bluerentalcars.com", "Nga^g6!"}
+//        };
         return customerCredentials;
     }
     //    1. Create a login method
@@ -63,8 +78,7 @@ public class Day21_DataProvider2 {
         ReusableMethods.verifyElementDisplayed(homePage.userID);
     }
     @AfterMethod
-    public void tearDown() {
+    public void tearDown(){
         Driver.closeDriver();
     }
-
 }
