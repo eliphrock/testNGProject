@@ -13,4 +13,14 @@ public class MedunnaHomePage {
 
     @FindBy(id = "account-menu")
     public WebElement userIcon;
+
+    @FindBy(id = "login-item")
+    public WebElement signInSection;
+
+    @FindBy(id = "entity-menu")
+    public WebElement itemsAndTitleMenu;
+
+    @FindBy(linkText = "Patient")
+    public WebElement patientSection;
+
 }

@@ -14,7 +14,7 @@ import static junit.framework.Assert.assertTrue;
 
 public class XYZBankTest {
 
-    @Test
+    @Test(groups="smoke-test")
     public void xyzBankTest() {
         XYZBankPage xyzBankPage = new XYZBankPage();
 //        Go to url https://www.globalsqa.com/angularJs-protractor/BankingProject/#/login
